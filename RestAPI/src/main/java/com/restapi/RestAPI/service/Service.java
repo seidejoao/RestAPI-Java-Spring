@@ -3,12 +3,9 @@ package com.restapi.RestAPI.service;
 import com.restapi.RestAPI.model.Model;
 import com.restapi.RestAPI.repository.Repository;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -22,11 +19,24 @@ public class Service {
         if(model == null){
             throw new IllegalArgumentException("Ta vazio isso ai man!");
         }
-        if(model.getAutor().isBlank() || model.getTitulo().isBlank() || model.getGenero().isBlank()){
+        if(model.getAutor().isBlank() || model.getTitulo().isBlank() || model.getDescricao().isBlank()){
             throw new IllegalArgumentException("Ta errado os atributo nisso ai man!");
         }
 
         return repository.save(model);
+    }
+
+    public List<Model> createAll(List<Model> model){
+        if(model == null){
+            throw new IllegalArgumentException("Ta vazio isso ai man!");
+        }
+        for (Model modelI : model){
+            if(modelI.getAutor().isBlank() || modelI.getTitulo().isBlank() || modelI.getGenero().isBlank()){
+                throw new IllegalArgumentException("Ta errado os atributo nisso ai man!");
+            }
+        }
+
+        return repository.saveAll(model);
     }
 
     public List<Model> list(){
@@ -44,7 +54,7 @@ public class Service {
 
     @Transactional
     public Model update(Long id, Model model){
-        Model modelUpdated = repository.findById(id).orElseThrow(() -> new RuntimeException("Livro com o id: " + id + " não econtrado!"));
+        Model modelUpdated = repository.findById(id).orElseThrow(() -> new RuntimeException("Livro com o id: " + id + " não encontrado!"));
 
         modelUpdated.setTitulo(model.getTitulo());
         modelUpdated.setAutor(model.getAutor());
