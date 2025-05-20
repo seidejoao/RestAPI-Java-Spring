@@ -1,0 +1,122 @@
+CREATE SCHEMA `biblioteca` ;
+
+CREATE TABLE `biblioteca`.`livros` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(45) NOT NULL,
+  `autor` VARCHAR(45) NULL,
+  `genero` VARCHAR(45) NULL,
+  `ano_lancamento` INT NULL,
+  `descricao` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+[
+  {
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "ano_lancamento": 1949,
+    "genero": "Ficção Distópica",
+    "descricao": "Um clássico sobre vigilância governamental e controle social."
+  },
+  {
+    "titulo": "O Senhor dos Anéis: A Sociedade do Anel",
+    "autor": "J.R.R. Tolkien",
+    "ano_lancamento": 1954,
+    "genero": "Fantasia",
+    "descricao": "A jornada épica para destruir o Um Anel e salvar a Terra-média."
+  },
+  {
+    "titulo": "Orgulho e Preconceito",
+    "autor": "Jane Austen",
+    "ano_lancamento": 1813,
+    "genero": "Romance",
+    "descricao": "A história de Elizabeth Bennet e Mr. Darcy em uma crítica à sociedade inglesa."
+  },
+  {
+    "titulo": "Dom Quixote",
+    "autor": "Miguel de Cervantes",
+    "ano_lancamento": 1605,
+    "genero": "Aventura",
+    "descricao": "As aventuras de um nobre que acredita ser um cavaleiro andante."
+  },
+  {
+    "titulo": "Cem Anos de Solidão",
+    "autor": "Gabriel García Márquez",
+    "ano_lancamento": 1967,
+    "genero": "Realismo Mágico",
+    "descricao": "A saga da família Buendía na mítica cidade de Macondo."
+  },
+  {
+    "titulo": "Crime e Castigo",
+    "autor": "Fiódor Dostoiévski",
+    "ano_lancamento": 1866,
+    "genero": "Ficção Psicológica",
+    "descricao": "A história de Raskólnikov e seu crime, seguido de culpa e redenção."
+  },
+  {
+    "titulo": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "ano_lancamento": 1943,
+    "genero": "Fábula",
+    "descricao": "Um príncipe viaja por planetas refletindo sobre a vida e a humanidade."
+  },
+  {
+    "titulo": "Moby Dick",
+    "autor": "Herman Melville",
+    "ano_lancamento": 1851,
+    "genero": "Aventura",
+    "descricao": "A obsessiva caça ao grande cachalote branco pelo capitão Ahab."
+  },
+  {
+    "titulo": "A Revolução dos Bichos",
+    "autor": "George Orwell",
+    "ano_lancamento": 1945,
+    "genero": "Sátira Política",
+    "descricao": "Uma fábula sobre animais que se rebelam contra os humanos."
+  },
+  {
+    "titulo": "Ulisses",
+    "autor": "James Joyce",
+    "ano_lancamento": 1922,
+    "genero": "Modernismo",
+    "descricao": "Um dia na vida de Leopold Bloom em Dublin, cheio de simbolismos."
+  },
+  {
+    "titulo": "O Grande Gatsby",
+    "autor": "F. Scott Fitzgerald",
+    "ano_lancamento": 1925,
+    "genero": "Romance",
+    "descricao": "A vida luxuosa e trágica de Jay Gatsby durante os anos 1920."
+  },
+  {
+    "titulo": "A Metamorfose",
+    "autor": "Franz Kafka",
+    "ano_lancamento": 1915,
+    "genero": "Ficção Absurda",
+    "descricao": "Gregor Samsa acorda transformado em um inseto monstruoso."
+  },
+  {
+    "titulo": "O Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "ano_lancamento": 1937,
+    "genero": "Fantasia",
+    "descricao": "A aventura de Bilbo Bolseiro para ajudar anões a recuperar seu tesouro."
+  },
+  {
+    "titulo": "A Divina Comédia",
+    "autor": "Dante Alighieri",
+    "ano_lancamento": 1320,
+    "genero": "Poesia Épica",
+    "descricao": "A jornada de Dante pelo Inferno, Purgatório e Paraíso."
+  },
+  {
+    "titulo": "Frankenstein",
+    "autor": "Mary Shelley",
+    "ano_lancamento": 1818,
+    "genero": "Terror Gótico",
+    "descricao": "A história do cientista Victor Frankenstein e sua criatura monstruosa."
+  }
+]
+
+^
+|
+exemplo de json para usar o método saveAll

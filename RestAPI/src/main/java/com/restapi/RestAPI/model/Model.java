@@ -19,14 +19,4 @@ public class Model {
     private Integer ano_lancamento;
     private String descricao;
 
-    @Override
-    public String toString() {
-        return
-            "\n-Id: " + id +
-            "\n-Autor: " + autor +
-            "\n-Título: " + titulo +
-            "\n-Genêro: " + genero +
-            "\n-Ano de Lançamento: " + ano_lancamento+
-            "\n-Descrição: " + descricao;
-    }
 }
