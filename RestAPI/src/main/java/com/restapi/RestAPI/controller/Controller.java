@@ -35,6 +35,11 @@ public class Controller {
         return ResponseEntity.ok(service.list());
     }
 
+    @GetMapping("/list/{query}")
+    public ResponseEntity<List<Model>> listQuery(@Validated @PathVariable String query){
+        return ResponseEntity.ok(service.listQuery(query));
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         service.deleteById(id);

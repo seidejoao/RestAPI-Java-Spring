@@ -3,6 +3,7 @@ package com.restapi.RestAPI.service;
 import com.restapi.RestAPI.model.Model;
 import com.restapi.RestAPI.repository.Repository;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -46,6 +47,10 @@ public class Service {
         }
 
         return repository.findAll();
+    }
+
+    public List<Model> listQuery(String query){
+        return repository.findAll(Sort.by(query));
     }
 
     public void deleteById(Long id){
