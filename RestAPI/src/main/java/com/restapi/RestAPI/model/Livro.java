@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Model {
+public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,5 +18,4 @@ public class Model {
     private String genero;
     private Integer ano_lancamento;
     private String descricao;
-
 }

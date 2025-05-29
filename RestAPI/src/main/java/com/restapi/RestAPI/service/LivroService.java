@@ -1,7 +1,7 @@
 package com.restapi.RestAPI.service;
 
-import com.restapi.RestAPI.model.Model;
-import com.restapi.RestAPI.repository.Repository;
+import com.restapi.RestAPI.model.Livro;
+import com.restapi.RestAPI.repository.LivroRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class Service {
-    private final Repository repository;
+public class LivroService {
+    private final LivroRepository repository;
 
-    public Service(Repository repository) {
+    public LivroService(LivroRepository repository) {
         this.repository = repository;
     }
 
-    public Model create(Model model){
+    public Livro create(Livro model){
         if(model == null){
             throw new IllegalArgumentException("Ta vazio isso ai man!");
         }
@@ -27,11 +27,11 @@ public class Service {
         return repository.save(model);
     }
 
-    public List<Model> createAll(List<Model> model){
+    public List<Livro> createAll(List<Livro> model){
         if(model == null){
             throw new IllegalArgumentException("Ta vazio isso ai man!");
         }
-        for (Model modelI : model){
+        for (Livro modelI : model){
             if(modelI.getAutor().isBlank() || modelI.getTitulo().isBlank() || modelI.getGenero().isBlank()){
                 throw new IllegalArgumentException("Ta errado os atributo nisso ai man!");
             }
@@ -40,8 +40,8 @@ public class Service {
         return repository.saveAll(model);
     }
 
-    public List<Model> list(){
-        List<Model> list = repository.findAll();
+    public List<Livro> listAll(){
+        List<Livro> list = repository.findAll();
         if(list.isEmpty()){
             throw new EmptyResultDataAccessException("Nenhum registro encontrado!", 1);
         }
@@ -49,7 +49,18 @@ public class Service {
         return repository.findAll();
     }
 
-    public List<Model> listQuery(String query){
+    public List<String> listOne(String query){
+        return switch (query) {
+            case "autor" -> repository.listAutor();
+            case "titulo" -> repository.listTitulo();
+            case "genero" -> repository.listGenero();
+            case "ano_lancamento" -> repository.listAnoLancamento();
+            case "descricao" -> repository.listDescricao();
+            default -> null;
+        };
+    }
+
+    public List<Livro> listSortQuery(String query){
         return repository.findAll(Sort.by(query));
     }
 
@@ -58,8 +69,8 @@ public class Service {
     }
 
     @Transactional
-    public Model update(Long id, Model model){
-        Model modelUpdated = repository.findById(id).orElseThrow(() -> new RuntimeException("Livro com o id: " + id + " não encontrado!"));
+    public Livro update(Long id, Livro model){
+        Livro modelUpdated = repository.findById(id).orElseThrow(() -> new RuntimeException("Livro com o id: " + id + " não encontrado!"));
 
         modelUpdated.setTitulo(model.getTitulo());
         modelUpdated.setAutor(model.getAutor());
