@@ -1,5 +1,6 @@
-CREATE SCHEMA `biblioteca` ;
+CREATE SCHEMA biblioteca ;
 
+!!! para mysql
 CREATE TABLE `biblioteca`.`livros` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
@@ -9,6 +10,18 @@ CREATE TABLE `biblioteca`.`livros` (
   `descricao` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+!!! para postgre
+CREATE TABLE biblioteca.livros (
+  id SERIAL PRIMARY KEY,
+  titulo VARCHAR(45) NOT NULL,
+  autor VARCHAR(45),
+  genero VARCHAR(45),
+  ano_lancamento INT,
+  descricao VARCHAR(45)
+);
+
+
+exemplo de json para usar o método saveAll
 [
   {
     "titulo": "1984",
@@ -116,7 +129,3 @@ CREATE TABLE `biblioteca`.`livros` (
     "descricao": "A história do cientista Victor Frankenstein e sua criatura monstruosa."
   }
 ]
-
-^
-|
-exemplo de json para usar o método saveAll
